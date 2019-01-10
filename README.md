@@ -36,6 +36,12 @@ public static ConfigureRedisAction configureRedisAction() {
 
 1. Prove the session is cached
 
+Start the application with the following command. You do **not** need Gradle installed as the command uses the wrapper.
+
+```
+./gradlew :spring-session-sample-boot-redis:bootRun
+```
+
 You can prove the session is cached in Redis by stopping/restarting the app. It will still have your session stored.
 
 You can check that the session key is in Redis via the Redis CLI:

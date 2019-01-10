@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		releaseBuild = version.endsWith('RELEASE')
+		snapshotBuild = version.endsWith('SNAPSHOT')
+		milestoneBuild = !(releaseBuild || snapshotBuild)
+
+		springBootVersion = '2.1.0.RELEASE'
+	}
+
+	repositories {
+		gradlePluginPortal()
+		maven { url 'https://repo.spring.io/plugins-release/' }
+	}
+
+	dependencies {
+		classpath 'io.spring.gradle:spring-build-conventions:0.0.22.RELEASE'
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+	}
+}
+
+apply plugin: 'io.spring.convention.root'
+
+group = 'org.springframework.session'
+description = 'Spring Session'
+
+gradle.taskGraph.whenReady { graph ->
+	def jacocoEnabled = graph.allTasks.any { it instanceof JacocoReport }
+	subprojects {
+		plugins.withType(JavaPlugin) {
+			sourceCompatibility = 1.8
+		}
+		plugins.withType(JacocoPlugin) {
+			tasks.withType(Test) {
+				jacoco.enabled = jacocoEnabled
+			}
+		}
+	}
+}

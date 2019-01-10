@@ -1,0 +1,33 @@
+dependencyManagement {
+	imports {
+		mavenBom 'com.fasterxml.jackson:jackson-bom:2.9.6'
+		mavenBom 'io.projectreactor:reactor-bom:Californium-SR3'
+		mavenBom 'org.springframework:spring-framework-bom:5.1.3.RELEASE'
+		mavenBom 'org.springframework.data:spring-data-releasetrain:Lovelace-SR3'
+		mavenBom 'org.springframework.security:spring-security-bom:5.1.2.RELEASE'
+		mavenBom 'org.testcontainers:testcontainers-bom:1.10.2'
+	}
+
+	dependencies {
+		dependencySet(group: 'com.hazelcast', version: '3.11') {
+			entry 'hazelcast'
+			entry 'hazelcast-client'
+		}
+
+		dependency 'com.h2database:h2:1.4.197'
+		dependency 'com.microsoft.sqlserver:mssql-jdbc:7.0.0.jre8'
+		dependency 'com.zaxxer:HikariCP:3.2.0'
+		dependency 'edu.umd.cs.mtc:multithreadedtc:1.01'
+		dependency 'io.lettuce:lettuce-core:5.1.3.RELEASE'
+		dependency 'javax.annotation:javax.annotation-api:1.3.2'
+		dependency 'javax.servlet:javax.servlet-api:4.0.1'
+		dependency 'junit:junit:4.12'
+		dependency 'mysql:mysql-connector-java:8.0.13'
+		dependency 'org.apache.derby:derby:10.14.2.0'
+		dependency 'org.assertj:assertj-core:3.11.1'
+		dependency 'org.hsqldb:hsqldb:2.4.1'
+		dependency 'org.mariadb.jdbc:mariadb-java-client:2.3.0'
+		dependency 'org.mockito:mockito-core:2.23.4'
+		dependency 'org.postgresql:postgresql:42.2.5'
+	}
+}

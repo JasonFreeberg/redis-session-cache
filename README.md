@@ -48,7 +48,23 @@ Spring Session consists of the following modules:
    redis-cli keys '*'
    ```
 
-   You can then delete the key and refresh the page to again prove that the session was backed by Azure Redis. To delete the session, run the following command:
+   You can then delete the key and refresh the page to again prove that the session was backed by Azure Redis. To delete the session, run the following command:./gradlew :spring-session-sample-boot-redis:build -x integrationTest
    ```
    redis-cli keys '*' | xargs redis-cli del
    ```
+
+## Deploy to Azure
+
+The previous Gradle command ran the Spring Boot application but it did not build a deployable archive. To build a deployable `.jar`, we can use the following command. (We skip integration tests because they require starting Docker and the extra time is unnecessary for a quick demo application).
+
+```
+./gradlew :spring-session-sample-boot-redis:build -x integrationTest
+```
+
+Since this project isn't configured using Maven, we need to deploy the compiled `.jar` using Zip-deploy. I use a Windows machine, so I use the Powershell command below. Pleas see the [Zip-deploy documentation.](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip)
+
+```
+az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
+```
+
+The archive we want to deploy will be under `______`.

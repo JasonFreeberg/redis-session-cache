@@ -4,7 +4,7 @@
 
 Spring Session consists of the following modules:
 
-- [Spring Session Core](/spring-session-core/) - provides core Spring Session functionalities and APIs
+- [Spring Session Core](/spring-session-core/src/main/java/org/springframework/session) - provides core Spring Session functionalities and APIs
 - [Spring Session Data Redis](/redis-session-cache/spring-session-data-redis) - provides SessionRepository and ReactiveSessionRepository implementation backed by Redis and configuration support
 
 ## Configuration Notes

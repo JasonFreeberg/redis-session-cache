@@ -67,4 +67,4 @@ Since this project isn't configured using Maven, we need to deploy the compiled 
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
 ```
 
-The archive we want to deploy will be under `______`.
+The archive we want to deploy will be under `redis-session-cache/samples/boot/redis/build/libs/spring-session-sample-boot-redis-2.1.2.RELEASE.jar`.
